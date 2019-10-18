@@ -3,8 +3,17 @@ using System.Threading.Tasks;
 
 public static class FileWriter
 {
-    public static async Task Write(string path, string text)
+    public static async Task Write(string filename, string text, string path = null)
     {
-        await File.WriteAllTextAsync(path,text);
+        if (path != null)
+        {
+            var dir = Directory.CreateDirectory(path);
+            await File.WriteAllTextAsync($"{dir.FullName}/{filename}", text);
+            return;
+        }
+        else
+        {
+            await File.WriteAllTextAsync(filename, text);
+        }
     }
 }

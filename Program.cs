@@ -2,14 +2,16 @@
 using System;
 using System.CommandLine.Invocation;
 using System.IO;
+using System.Threading.Tasks;
+
 class Program
 { 
-   static int Main(string[] args)
+   static async Task<int> Main(string[] args)
 {
     // Create a root command with some options
     var rootCommand = new RootCommand
     {
-        Commands.Init(),
+        Commands.InitCommand(),
         new Option(
             "--int-option",
             "An option whose argument is parsed as an int")
@@ -32,11 +34,16 @@ class Program
 
     rootCommand.Description = "My sample app";
 
-    rootCommand.Handler = CommandHandler.Create<bool, int, bool, FileInfo>((init, intOption, boolOption, fileOption) =>
+    rootCommand.Handler = CommandHandler.Create<bool, int, bool, FileInfo>(async (init, intOption, boolOption, fileOption) =>
     {
         if (init)
         {
-            Console.WriteLine($"Write File!");
+            Console.WriteLine($"Writing Geneisis Block ...");
+            var result = await Init.Create(new string []{fileOption.FullName});
+            if (!result.Success)
+            {
+                Console.WriteLine(result.Message);
+            }
         }
         Console.WriteLine($"The value for --int-option is: {intOption}");
         Console.WriteLine($"The value for --bool-option is: {boolOption}");
@@ -45,5 +52,5 @@ class Program
 
     // Parse the incoming args and invoke the handler
     return rootCommand.InvokeAsync(args).Result;
-}
+    }
 }

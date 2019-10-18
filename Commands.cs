@@ -2,23 +2,24 @@ using System;
 using System.CommandLine;
 using System.CommandLine.Invocation;
 using System.IO;
+using System.Threading.Tasks;
 
 public static class Commands{
-    public static RootCommand Inflate()
+    public static async Task<RootCommand> Inflate()
     {
         var root = new RootCommand()
         {
-            Commands.Init()
+            Commands.InitCommand()
         };
 
         return root;
 
     } 
 
-    public static Command Init()
+    public static Command InitCommand()
     {
         var command = new Command("init", "initialize the Formfile.");
-        var fileOption = new Option("-file", "specify the file")
+        var fileOption = new Option("--file","A Stack or Deployment file")
         {
             Argument = new Argument<FileInfo>(()=>new FileInfo("./stack.yaml")),
         };
@@ -30,9 +31,15 @@ public static class Commands{
         command.AddOption(fileOption);
 
         command.Handler = CommandHandler.Create(
-        (string file) =>
+        async (FileInfo file) =>
         {
-          ;
+
+                Console.WriteLine($"Writing Geneisis Block ...");
+                var result = await Init.Create(new string[] { file.FullName });
+                if (!result.Success)
+                {
+                    Console.WriteLine(result.Message);
+                }
         });
 
         return command;
