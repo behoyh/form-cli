@@ -1,0 +1,11 @@
+/Users/beshoyhanna/formation-cli/bin/Debug/netcoreapp2.2/formation-cli.deps.json
+/Users/beshoyhanna/formation-cli/bin/Debug/netcoreapp2.2/formation-cli.runtimeconfig.json
+/Users/beshoyhanna/formation-cli/bin/Debug/netcoreapp2.2/formation-cli.runtimeconfig.dev.json
+/Users/beshoyhanna/formation-cli/bin/Debug/netcoreapp2.2/formation-cli.dll
+/Users/beshoyhanna/formation-cli/bin/Debug/netcoreapp2.2/formation-cli.pdb
+/Users/beshoyhanna/formation-cli/obj/Debug/netcoreapp2.2/formation-cli.csprojAssemblyReference.cache
+/Users/beshoyhanna/formation-cli/obj/Debug/netcoreapp2.2/formation-cli.csproj.CoreCompileInputs.cache
+/Users/beshoyhanna/formation-cli/obj/Debug/netcoreapp2.2/formation-cli.AssemblyInfoInputs.cache
+/Users/beshoyhanna/formation-cli/obj/Debug/netcoreapp2.2/formation-cli.AssemblyInfo.cs
+/Users/beshoyhanna/formation-cli/obj/Debug/netcoreapp2.2/formation-cli.dll
+/Users/beshoyhanna/formation-cli/obj/Debug/netcoreapp2.2/formation-cli.pdb
